@@ -14,7 +14,15 @@
                </ul>-->
 
             <div style="*width:200px; float:left; margin:0 0px 20px 0">
-                <input type='text' ng-model='near' class="form-control" placeholder="Near" ng-init="near = 'Valletta'">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <input type='text' ng-model='near' ng-change="postExplore()" class="form-control" placeholder="Near" ng-init="near = 'Valletta'">
+                    </div>
+                    <div class="col-xs-4">
+                        <input type="number" ng-model='limit' ng-change="postExplore()" class="form-control" placeholder="Limit" ng-init="limit = 10">
+                    </div>
+                </div>
+
                 <ul class="anyClass2 skinPlank">
                     <li ng-repeat="category in categories">
                         <a href="#" ng-click="postExplore(category.name);">
@@ -26,7 +34,9 @@
                                     <% cat.name + (cat.categories.length > 0 ? ' (' + cat.categories.length + ')' : '')%>
                                 </a>
                                 <ul ng-if="cat.categories.length > 0">
-                                    <li ng-repeat="subcat in cat.categories"><a href="#"><% subcat.name %></a></li>
+                                    <li ng-repeat="subcat in cat.categories">
+                                        <a href="#" ng-click="postExplore(subcat.name);"><% subcat.name %></a>
+                                    </li>
                                 </ul>
                             </li>
                         </ul>

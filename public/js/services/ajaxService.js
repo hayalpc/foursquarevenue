@@ -11,7 +11,7 @@ app.service('AjaxService',
                 postExplore: function (near,query,limit) {
                     var postFields = {
                         near:near,
-                        query:query,
+                        qquery:query,
                         limit:limit
                     };
                     return $http.post(api_path + 'post_explore', postFields);

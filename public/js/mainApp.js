@@ -14,23 +14,30 @@ app.controller('mainController', ['$scope', '$http', 'AjaxService', function ($s
         AjaxService.getCategories().then(function (data) {
             if (data.data.status == 1) {
                 $scope.categories = data.data.categories;
-            }else{
+            } else {
                 $scope.categories = [];
                 //TODO make something
             }
         });
 
         $scope.postExplore = function (query) {
-            $scope.query = query;
-            AjaxService.postExplore($scope.near, $scope.query, $scope.limit).then(function (data) {
-                if (data.data.status == 1) {
-                    $scope.venues = data.data.venues;
-                    console.log($scope.venues);
-                }else{
-                    $scope.venues = [];
-                    //TODO make something
-                }
-            });
+            if (query != undefined) {
+                $scope.query = query;
+            }
+            if ($scope.near.length > 3 && $scope.query.length > 2) {
+
+                AjaxService.postExplore($scope.near, $scope.query, $scope.limit).then(function (data) {
+                    if (data.data.status == 1) {
+                        $scope.venues = data.data.venues;
+                        console.log($scope.venues);
+                    } else {
+                        $scope.venues = [];
+                        //TODO make something
+                    }
+                });
+            }else{
+                $scope.venues = [];
+            }
         }
     };
 

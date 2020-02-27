@@ -2,6 +2,11 @@ body{
     background: #00ccff;
     color:black;
 }
+.container{
+    width: 100%!important;
+    max-width: 100%!important;
+}
+
 /*layout css*/
 body, html {
     min-height:100%;
@@ -173,7 +178,16 @@ hr{clear:both}
 }
 
 .box {
-    background: red;
+    background: #80808091;
     float: left;
-    margin: 5px;
+    margin: 10px 0 10px 15px;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    -webkit-box-shadow: 6px 3px 24px -6px rgba(0,0,0,0.76);
+    -moz-box-shadow: 6px 3px 24px -6px rgba(0,0,0,0.76);
+    box-shadow: 6px 3px 24px -6px rgba(0,0,0,0.76);
+    font-weight: 600;
+    text-align: center;
 }
+

@@ -17,11 +17,11 @@ class AjaxController extends Controller
 
     public function post_explore(Request $request)
     {
-        if(!$request->near || !$request->query || !$request->limit){
+        if(!$request->near || !$request->qquery || !$request->limit){
             $data = ['status'=>0,'message'=>'Invalid parameters!'];
             return response()->json($data);
         }else{
-            $data = Foursquare::postExplore($request->near,$request->query,$request->limit);
+            $data = Foursquare::postExplore($request->near,$request->qquery,$request->limit);
             return response()->json($data);
         }
     }
